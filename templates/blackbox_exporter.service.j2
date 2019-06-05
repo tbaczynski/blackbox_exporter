@@ -1,0 +1,20 @@
+[Unit]
+Description=Prometheus Blackbox Exporter
+Documentation=https://github.com/prometheus/blackbox_exporter
+After=network-online.target
+
+[Service]
+Type=simple
+PIDFile={{ prometheus_blackbox_exporter_pid_path }}/blackbox_exporter.pid
+EnvironmentFile=-/etc/default/blackbox_exporter
+User={{ prometheus_blackbox_exporter_user }}
+Group={{ prometheus_blackbox_exporter_group }}
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart={{ prometheus_blackbox_exporter_daemon_dir }}/blackbox_exporter $STARTUP_ARGS
+
+SyslogIdentifier=prometheus-blackbox_exporter
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

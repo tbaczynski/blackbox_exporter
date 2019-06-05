@@ -1,0 +1,12 @@
+# Prometheus Blackbox Exporter defaults
+#
+START=yes
+
+#
+STARTUP_ARGS=' \
+      --config.file {{ prometheus_blackbox_exporter_subdir }}/{{ prometheus_blackbox_exporter_config }} \
+      --web.listen-address {{ prometheus_blackbox_exporter_listen }} \
+      --timeout-offset 0.5 \
+      --history.limit {{ prometheus_blackbox_exporter_history | d('100') }} \
+      --log.level={{ prometheus_blackbox_exporter_loglevel }} \
+      '

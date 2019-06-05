@@ -1,0 +1,15 @@
+---
+
+- name: install prometheus blackbox_exporter
+  include: install.yaml
+  tags:
+    - prometheus
+    - blackbox_exporter
+
+- name: ufw | open access to blackbox_exporter
+  include: ufw.yaml
+  when: enable_ufw | bool
+  tags:
+    - prometheus
+    - blackbox_exporter
+    - ufw
