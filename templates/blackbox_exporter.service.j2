@@ -10,6 +10,7 @@ EnvironmentFile=-/etc/default/blackbox_exporter
 User={{ prometheus_blackbox_exporter_user }}
 Group={{ prometheus_blackbox_exporter_group }}
 ExecReload=/bin/kill -HUP $MAINPID
+AmbientCapabilities=CAP_NET_RAW
 ExecStart={{ prometheus_blackbox_exporter_daemon_dir }}/blackbox_exporter $STARTUP_ARGS
 
 SyslogIdentifier=prometheus-blackbox_exporter
