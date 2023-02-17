@@ -30,7 +30,7 @@
   user:
     name: "{{ prometheus_blackbox_exporter_user }}"
     group: "{{ prometheus_blackbox_exporter_group }}"
-    createhome: no
+    createhome: false
     shell: /sbin/nologin
     comment: "Prometheus User"
     state: present
@@ -52,7 +52,7 @@
     dest: "{{ prometheus_blackbox_exporter_install_path }}"
     owner: '{{ prometheus_blackbox_exporter_user }}'
     group: '{{ prometheus_blackbox_exporter_group }}'
-    copy: no
+    copy: false
     creates: '{{ prometheus_blackbox_exporter_subdir }}'
   notify:
     - restart blackbox_exporter
@@ -82,6 +82,6 @@
   systemd:
     name: blackbox_exporter
     state: started
-    enabled: yes
+    enabled: true
 
 ...

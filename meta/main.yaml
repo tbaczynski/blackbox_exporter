@@ -6,13 +6,15 @@ galaxy_info:
 
   license: BSD
 
-  min_ansible_version: 2.7
+  min_ansible_version: '2.7'
 
   platforms:
     - name: Ubuntu
       versions:
         - xenial
         - bionic
+        - focal
+        - jammy
     - name: Debian
       versions:
         - jessie
